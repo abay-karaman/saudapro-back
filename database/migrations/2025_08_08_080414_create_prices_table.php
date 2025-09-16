@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('price_type_id')->constrained('price_types')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->decimal('price', 15, 3);
+            $table->decimal('discount', 3, 1)->nullable();
+            $table->timestamp('discount_expires_at')->nullable();
             $table->timestamps();
 
             $table->unique(['price_type_id', 'product_id']);

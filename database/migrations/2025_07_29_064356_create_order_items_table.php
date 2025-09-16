@@ -16,7 +16,12 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products');
             $table->unsignedInteger('quantity')->default(1);
+            $table->unsignedInteger('qty_collected')->nullable();
+            $table->unsignedInteger('qty_delivered')->nullable();
             $table->decimal('price', 10, 3)->default(0);
+            $table->text('comment')->nullable();
+            $table->text('delivery_comment')->nullable();
+
             $table->timestamps();
 
             // запрет на дублирование товара в одном заказе

@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');                 // Наименование юр. лица
             $table->string('code')->unique()->nullable(); // Внутренний код c 1C
-            $table->string('bin_iin')->nullable()->index();  // БИН/ИИН
+            $table->string('uid')->nullabable()->index();
+            $table->string('bin_iin')->nullable();  // БИН/ИИН
             $table->string('phone')->nullable()->index();
+            $table->foreignId('user_id')->nullable()
+                ->constrained('users')->nullOnDelete();
+            $table->foreignId('representative_id')->nullable()
+                ->constrained('users')->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
