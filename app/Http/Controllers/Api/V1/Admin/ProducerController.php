@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Producer\StoreRoleRequest;
-use App\Http\Requests\Admin\Producer\UpdateRoleRequest;
+use App\Http\Requests\Admin\Producer\StoreProducerRequest;
+use App\Http\Requests\Admin\Producer\UpdateProducerRequest;
 use App\Http\Resources\Admin\ProducerResource;
 use App\Models\Producer;
 
@@ -24,12 +24,12 @@ class ProducerController extends Controller
         return new ProducerResource($producer);
     }
 
-    public function store(StoreRoleRequest $request)
+    public function store(StoreProducerRequest $request)
     {
         return new ProducerResource(Producer::create($request->validated()));
     }
 
-    public function update(UpdateRoleRequest $request, $producerId)
+    public function update(UpdateProducerRequest $request, $producerId)
     {
         $producer = Producer::where('id', $producerId)->firstOrFail();
         $producer->update($request->validated());

@@ -19,7 +19,7 @@ class FaqController extends Controller
 
     public function show($faqId)
     {
-        $faq = Faq::where('parent_id', $faqId)
+        $faq = Faq::where('id', $faqId)
             ->firstOrFail();
         return new FaqResource($faq);
     }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\StoreOrderRequest;
-use App\Http\Requests\Admin\Category\UpdateOrderRequest;
+use App\Http\Requests\Admin\Category\StoreCategoryRequest;
+use App\Http\Requests\Admin\Category\UpdateCategoryRequest;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Models\Category;
 
@@ -24,12 +24,12 @@ class CategoryController extends Controller
         return CategoryResource::collection($children);
     }
 
-    public function store(StoreOrderRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         return new CategoryResource(Category::create($request->validated()));
     }
 
-    public function update(UpdateOrderRequest $request, $categoryId)
+    public function update(UpdateCategoryRequest $request, $categoryId)
     {
         $category = Category::where('id', $categoryId)->firstOrFail();
         $category->update($request->validated());

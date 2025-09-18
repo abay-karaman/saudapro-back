@@ -19,7 +19,7 @@ class BannerController extends Controller
 
     public function show($bannerId)
     {
-        $banner = Banner::where('parent_id', $bannerId)
+        $banner = Banner::where('id', $bannerId)
             ->firstOrFail();
         return new BannerResource($banner);
     }

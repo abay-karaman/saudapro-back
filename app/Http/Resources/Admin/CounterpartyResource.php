@@ -24,7 +24,7 @@ class CounterpartyResource extends JsonResource
             'bin_iin' => $this->bin_iin,
             'phone' => $this->phone,
             'user_id' => $this->user_id,
-            'representative_id' => $this->representative_id,
+            'user_name' => $this->user?->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,

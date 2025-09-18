@@ -55,6 +55,7 @@ Route::middleware(['throttle:api', 'auth:sanctum'])
     ->group(function () {
 
         Route::prefix('admin')
+            ->name('admin.')
             ->group(function () {
 
                 Route::apiResource('categories', \App\Http\Controllers\Api\V1\Admin\CategoryController::class);

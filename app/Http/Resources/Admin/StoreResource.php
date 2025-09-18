@@ -23,6 +23,7 @@ class StoreResource extends JsonResource
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'counterparty_id' => $this->counterparty_id,
+            'counterparty_name' => $this->counterparty?->name,
         ];
     }
 }

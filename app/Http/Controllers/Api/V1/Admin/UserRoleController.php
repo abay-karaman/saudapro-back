@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Role\StorePriceTypeRequest;
-use App\Http\Requests\Admin\Role\UpdatePriceTypeRequest;
+use App\Http\Requests\Admin\Role\StoreRoleRequest;
+use App\Http\Requests\Admin\Role\UpdateRoleRequest;
 use App\Http\Resources\Admin\RoleResource;
 use App\Models\Role;
 
@@ -24,12 +24,12 @@ class UserRoleController extends Controller
         return new RoleResource($role);
     }
 
-    public function store(StorePriceTypeRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         return new RoleResource(Role::create($request->validated()));
     }
 
-    public function update(UpdatePriceTypeRequest $request, $roleId)
+    public function update(UpdateRoleRequest $request, $roleId)
     {
         $role = Role::where('id', $roleId)->firstOrFail();
         $role->update($request->validated());

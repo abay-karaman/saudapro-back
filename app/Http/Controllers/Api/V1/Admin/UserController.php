@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function show($userId)
     {
-        $user = User::where('parent_id', $userId)
+        $user = User::where('id', $userId)
             ->firstOrFail();
         return new UserResource($user);
     }

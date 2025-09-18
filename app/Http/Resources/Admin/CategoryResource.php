@@ -20,7 +20,7 @@ class CategoryResource extends JsonResource
             'code' => $this->code,
             'icon' => $this->icon,
             'parent_id' => $this->parent_id,
-            'parent_code' => $this->paren_code,
+            'parent_name' => $this->parent?->name,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

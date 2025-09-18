@@ -19,7 +19,7 @@ class OrderController extends Controller
 
     public function show($orderId)
     {
-        $order = Order::where('parent_id', $orderId)
+        $order = Order::where('id', $orderId)
             ->firstOrFail();
         return new OrderResource($order);
     }
