@@ -56,29 +56,20 @@ Route::middleware(['throttle:api', 'auth:sanctum'])
 
         Route::prefix('admin')
             ->group(function () {
-                Route::get('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'index']);
-                Route::get('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'show']);
-                Route::post('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'store']);
-                Route::patch('categories/{id}', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'update']);
-                Route::delete('categories/{id}', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'destroy']);
 
-                Route::get('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'index']);
-                Route::get('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'show']);
-                Route::post('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'store']);
-                Route::patch('products/{id}', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'update']);
-                Route::delete('products/{id}', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'destroy']);
-
-                Route::get('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'index']);
-                Route::get('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'show']);
-                Route::post('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'store']);
-                Route::patch('counterparties/{id}', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'update']);
-                Route::delete('counterparties/{id}', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'destroy']);
-
-                Route::get('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'index']);
-                Route::get('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'show']);
-                Route::post('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'store']);
-                Route::patch('orders/{id}', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'update']);
-                Route::delete('orders/{id}', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'destroy']);
+                Route::apiResource('categories', \App\Http\Controllers\Api\V1\Admin\CategoryController::class);
+                Route::apiResource('producers', \App\Http\Controllers\Api\V1\Admin\ProducerController::class);
+                Route::apiResource('products', \App\Http\Controllers\Api\V1\Admin\ProductController::class);
+                Route::apiResource('counterparties', \App\Http\Controllers\Api\V1\Admin\CounterpartyController::class);
+                Route::apiResource('users', \App\Http\Controllers\Api\V1\Admin\UserController::class);
+                Route::apiResource('orders', \App\Http\Controllers\Api\V1\Admin\OrderController::class);
+                Route::apiResource('stores', \App\Http\Controllers\Api\V1\Admin\StoreController::class);
+                Route::apiResource('roles', \App\Http\Controllers\Api\V1\Admin\UserRoleController::class);
+                Route::apiResource('price-types', \App\Http\Controllers\Api\V1\Admin\PriceTypeController::class);
+                Route::apiResource('units', \App\Http\Controllers\Api\V1\Admin\UnitController::class);
+                Route::apiResource('abouts', \App\Http\Controllers\Api\V1\Admin\AboutController::class);
+                Route::apiResource('faqs', \App\Http\Controllers\Api\V1\Admin\FaqController::class);
+                Route::apiResource('banners', \App\Http\Controllers\Api\V1\Admin\BannerController::class);
             });
 
         Route::get('logout', [AuthController::class, 'logout']);

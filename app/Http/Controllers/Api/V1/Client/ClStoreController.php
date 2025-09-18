@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Client;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Store\CreateStoreRequest;
+use App\Http\Requests\Store\StoreStoreRequest;
 use App\Http\Requests\Store\UpdateStoreRequest;
 use App\Http\Resources\V1\StoreResource;
 use App\Models\Store;
@@ -30,7 +30,7 @@ class ClStoreController extends Controller
         return new StoreResource($store);
     }
 
-    public function store(CreateStoreRequest $request)
+    public function store(StoreStoreRequest $request)
     {
         $user = $request->user();
         // Проверка наличия контрагента

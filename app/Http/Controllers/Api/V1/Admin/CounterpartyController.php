@@ -21,7 +21,7 @@ class CounterpartyController extends Controller
     {
         $counterparty = Counterparty::where('id', $counterpartyId)
             ->firstOrFail();
-        return CounterpartyResource::collection($counterparty);
+        return new CounterpartyResource($counterparty);
     }
 
     public function store(StoreCounterpartyRequest $request)

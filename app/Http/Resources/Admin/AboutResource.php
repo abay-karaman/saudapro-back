@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Resources\Admin;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class AboutResource extends JsonResource
+{
+    public function toArray($request)
+    {
+
+        return [
+            'id'                => $this->id,
+            'call_center_phone'=> $this->call_center_phone,
+            'content'           => $this->content,
+            'is_active'         => (bool) $this->is_active,
+            'created_at'        => $this->created_at?->toDateTimeString(),
+            'updated_at'        => $this->updated_at?->toDateTimeString(),
+        ];
+    }
+}

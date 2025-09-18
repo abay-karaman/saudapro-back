@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $user = User::where('parent_id', $userId)
             ->firstOrFail();
-        return UserResource::collection($user);
+        return new UserResource($user);
     }
 
     public function store(StoreUserRequest $request)

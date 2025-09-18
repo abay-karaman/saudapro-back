@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1\OneC;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Producer\ProducerBulkRequest;
+use App\Http\Requests\Producer\StoreProducerRequest;
 use App\Http\Requests\Product\BulkStoreProductRequest;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\DB;
 class Producer1CController extends Controller
 {
 
-    public function bulkStore(ProducerBulkRequest $request)
+    public function bulkStore(StoreProducerRequest $request)
     {
         $data = $request->validated();
 

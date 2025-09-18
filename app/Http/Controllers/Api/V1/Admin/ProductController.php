@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $product = Product::where('id', $productId)
             ->firstOrFail();
-        return ProductResource::collection($product);
+        return new ProductResource($product);
     }
 
     public function store(StoreProductRequest $request)

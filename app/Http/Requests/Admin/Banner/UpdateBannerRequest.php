@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Requests\Admin\Banner;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateBannerRequest extends FormRequest
+{
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+
+    public function rules(): array
+    {
+        return [
+            'title'      => 'sometimes|required|string|max:191',
+            'image_path' => 'sometimes|required|string|max:191',
+            'link'       => 'nullable|string|max:191|url',
+            'type'       => 'sometimes|required|in:main,catalog,promo',
+            'order'      => 'sometimes|required|integer|min:0',
+            'is_active'  => 'sometimes|required|boolean',
+        ];
+    }
+}

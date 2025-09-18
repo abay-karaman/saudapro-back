@@ -21,7 +21,7 @@ class OrderController extends Controller
     {
         $order = Order::where('parent_id', $orderId)
             ->firstOrFail();
-        return OrderResource::collection($order);
+        return new OrderResource($order);
     }
 
     public function store(StoreOrderRequest $request)
