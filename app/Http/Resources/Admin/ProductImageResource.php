@@ -5,9 +5,10 @@ namespace App\Http\Resources\V1;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryResource extends JsonResource
+class ProductImageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,11 +19,7 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'code' => $this->code,
-            'icon' => $this->icon, //? Storage::disk('s3')->url($this->icon) : null,
-            'parentId' => $this->parent_id,
-            'isActive' => $this->is_active,
+            'image_path' => $this->image_path ? Storage::disk('s3')->url($this->image_path) : null,
         ];
     }
 }

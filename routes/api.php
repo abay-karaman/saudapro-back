@@ -53,6 +53,34 @@ Route::prefix('v1')
 Route::middleware(['throttle:api', 'auth:sanctum'])
     ->prefix('v1')
     ->group(function () {
+
+        Route::prefix('admin')
+            ->group(function () {
+                Route::get('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'index']);
+                Route::get('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'show']);
+                Route::post('categories', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'store']);
+                Route::patch('categories/{id}', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'update']);
+                Route::delete('categories/{id}', [\App\Http\Controllers\Api\V1\Admin\CategoryController::class, 'destroy']);
+
+                Route::get('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'index']);
+                Route::get('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'show']);
+                Route::post('products', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'store']);
+                Route::patch('products/{id}', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'update']);
+                Route::delete('products/{id}', [\App\Http\Controllers\Api\V1\Admin\ProductController::class, 'destroy']);
+
+                Route::get('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'index']);
+                Route::get('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'show']);
+                Route::post('counterparties', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'store']);
+                Route::patch('counterparties/{id}', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'update']);
+                Route::delete('counterparties/{id}', [\App\Http\Controllers\Api\V1\Admin\CounterpartyController::class, 'destroy']);
+
+                Route::get('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'index']);
+                Route::get('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'show']);
+                Route::post('orders', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'store']);
+                Route::patch('orders/{id}', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'update']);
+                Route::delete('orders/{id}', [\App\Http\Controllers\Api\V1\Admin\OrderController::class, 'destroy']);
+            });
+
         Route::get('logout', [AuthController::class, 'logout']);
 
         Route::get('profile', [ProfileController::class, 'show']);
