@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Counterparty extends Model
 {
@@ -42,5 +43,16 @@ class Counterparty extends Model
     public function orders(): hasMany
     {
         return $this->hasMany(Order::class, 'counterparty_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->uid)) {
+                $model->uid = Str::uuid()->toString();
+            }
+        });
     }
 }

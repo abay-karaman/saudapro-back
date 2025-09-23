@@ -19,9 +19,9 @@ class CategoryController extends Controller
 
     public function show($categoryId)
     {
-        $children = Category::where('parent_id', $categoryId)
-            ->get();
-        return CategoryResource::collection($children);
+        $category = Category::where('id', $categoryId)
+            ->firstOrfail();
+        return new CategoryResource($category);
     }
 
     public function store(StoreCategoryRequest $request)

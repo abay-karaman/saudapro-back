@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->text('content');
+            $table->string('call_center_phone')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
